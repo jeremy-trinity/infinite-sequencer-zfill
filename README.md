@@ -1,32 +1,32 @@
 # infinite-sequencer-zfill 🚀
 
-A smart, scalable Python utility designed to bring order to chaotic file directories. This script renames files with incrementing numeric prefixes, handles dynamic padding automatically, and cleans up filenames for better compatibility.
+A smart, state-aware Python utility designed to bring perfect order to file directories. This script renames files with incrementing numeric prefixes, handles dynamic padding automatically, and ensures consistent sorting across your entire folder.
 
 ## ✨ Key Features
 
-* **Dynamic Padding:** Automatically scales from `01_` to `001_` (and beyond) based on the total number of files.
-* **Intelligent Skipping:** Recognizes files that already have a 3-digit prefix (e.g., `001_file.html`) and skips them to avoid double-processing.
+* **Retroactive Padding:** If your folder grows from 9 to 10 files, the script automatically updates `1_` to `01_` so your files always sort correctly.
+* **Sequence Memory:** Automatically detects the highest number in the folder and starts new files from the next available number.
 * **Space Removal:** Automatically strips all spaces from filenames for cleaner, web-friendly naming conventions.
-* **Idempotent:** Safe to run multiple times in the same folder as you add new files.
+* **Self-Exclusion:** Smart enough to skip `sequencer.py` and `sequencerCHANGES.py` automatically.
 
 ## 🛠️ How it Works
 
-The script calculates the necessary "zero-fill" (`zfill`) based on your file count:
-* **1-99 files:** Prefixes like `01_`, `02_`...
-* **100-999 files:** Automatically shifts to `001_`, `002_`...
-* **1000+ files:** Scales to `0001_` and so on.
+The script calculates the necessary "zero-fill" (`zfill`) based on the **final total** of files:
+* **1-9 files:** Prefixes like `1_`, `2_`...
+* **10-99 files:** Automatically ensures all files use `01_`, `02_`...
+* **100+ files:** Dynamically scales to `001_` and beyond.
 
 ## 🚀 Usage
 
-1.  Place `renamer.py` in the directory you wish to organize.
-2.  Run the script via terminal:
+1. Place `sequencer.py` in the directory you wish to organize.
+2. Run the script via terminal:
     ```bash
-    python renamer.py
+    python sequencer.py
     ```
 
 ## 📝 Rules & Best Practices
 
-* **The "CHANGES" Rule:** If modifying this script, create a copy named `renamerCHANGES.py` to test new logic before updating the main file.
+* **The "CHANGES" Rule:** If modifying this script, create a copy named `sequencerCHANGES.py` to test new logic before updating the main file.
 * **Git Integration:** Always commit your changes after running the sequencer to maintain a clear version history.
 
 ---
